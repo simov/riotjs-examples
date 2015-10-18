@@ -46,7 +46,7 @@ var app = {
   cleanup: {
     content: function () {},
     news: function () {
-      app.tags.news.on('unmount', function () {
+      app.tags.news.one('unmount', function () {
         clearInterval(this.timer)
         this.isMounted = false
       })
