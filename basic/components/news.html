@@ -1,6 +1,4 @@
 <h4>News</h4>
 <ul>
-  <li>{json.a}</li>
-  <li>{json.b}</li>
-  <li>{json.c}</li>
+  <li each="{key, value in json}">{value}</li>
 </ul>
