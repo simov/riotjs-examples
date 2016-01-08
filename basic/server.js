@@ -16,6 +16,7 @@ var app = express()
   .set('view cache', false)
   .engine('html', consolidate.hogan)
 
+  .use(serveStatic(path.join(__dirname, 'app')))
   .use(serveStatic(path.join(__dirname, 'components')))
   .use(serveStatic(path.join(__dirname, 'public')))
   .use(serveStatic(path.join(__dirname, 'views')))
