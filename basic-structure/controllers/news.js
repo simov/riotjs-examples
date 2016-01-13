@@ -1,5 +1,5 @@
 
-app.controller.news = function (args) {
+app.controller.news = function (opts) {
   var self = this
   this.timer = setInterval(function () {
     $.ajax({
