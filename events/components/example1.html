@@ -1,0 +1,23 @@
+
+<h1>Example 1</h1>
+
+<form action="#" method="POST" accept-charset="utf-8">
+  <fieldset>
+    <label>Filter</label>
+    <input id="input" onkeyup="{filter}" type="text" name="" value="" />
+    <button onclick="{clear}">Clear</button>
+  </fieldset>
+</form>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Table</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr each="{tables}" if="{show || show === undefined}">
+      <td>{verbose}</td>
+    </tr>
+  </tbody>
+</table>
