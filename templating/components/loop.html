@@ -1,0 +1,51 @@
+
+<h1>Array</h1>
+
+<ul>
+  <li each="{res.arr}">{a} - {b}</li>
+</ul>
+
+
+<h1>Array + Index + Named Object</h1>
+
+<ul>
+  <li each="{obj, i in res.arr}">{i} - {obj.a} - {obj.b}</li>
+</ul>
+
+
+<h1>Virtual + Array</h1>
+
+<virtual each="{res.arr}">
+  <p>{a} - {b}</p>
+</virtual>
+
+
+<h1>Nested</h1>
+
+<ul>
+  <li each="{obj, i in res.arr}">
+    <p each="{key, value in obj}">{key} - {value}</p>
+  </li>
+</ul>
+
+
+<h1>Nested + Parent</h1>
+
+<ul>
+  <li each="{obj, i in res.arr}">
+    <p each="{key, value in obj}">{key} - {value} - {parent.i} - {parent.parent.res.arr[i][key]}</p>
+  </li>
+</ul>
+
+
+<h1>Object</h1>
+
+<ul>
+  <li each="{key, value in res.obj}">{key} - {value}</li>
+</ul>
+
+<h1>Virtual + Object</h1>
+
+<virtual each="{key in res.obj}">
+  <p>{key} - {res.obj[key]}</p>
+</virtual>
