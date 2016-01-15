@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Riot Example</title>
+  <link rel="shortcut icon" href="" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.12/riot.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="router.js" type="text/javascript" charset="utf-8"></script>
+  <script src="tag.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="external.js" type="text/javascript" charset="utf-8"></script>
+  <script src="inline.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="nested.js" type="text/javascript" charset="utf-8"></script> -->
+
+  <script src="init.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/#external">External</a></li>
+        <li><a href="/#inline">Inline</a></li>
+        <!-- <li><a href="/#nested">Nested</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+  <external></external>
+
+  <template id="inline">
+    <h1>{name} Template!</h1>
+  </template>
+
+  <inline></inline>
+
+</body>
+</html>
