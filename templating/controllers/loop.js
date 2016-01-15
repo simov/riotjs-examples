@@ -8,7 +8,7 @@ app.controller.loop = function (opts) {
 
   $.ajax({
     type: 'GET',
-    url: 'api',
+    url: 'loops',
     dataType: 'json',
     success: handleResponse.bind(this)
   })

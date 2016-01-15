@@ -19,11 +19,33 @@ app.use(serveStatic(path.join(__dirname, 'controllers')))
 app.use(serveStatic(path.join(__dirname, 'public')))
 app.use(serveStatic(path.join(__dirname, 'views')))
 
-app.get('/api', function (req, res) {
+app.get('/loops', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})
   res.end(JSON.stringify({
     arr: [{a: 1, b: 2}, {a: 3, b: 4}],
     obj: {a: 1, b: 2, c: 3, d: 4}
+  }))
+})
+
+app.get('/select', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {text: 'Car', value: 'car'},
+    {text: 'Game', value: 'game'},
+    {text: 'Gender', value: 'gender'},
+    {text: 'Member', value: 'member'},
+    {text: 'Team', value: 'team'},
+    {text: 'User', value: 'user'}
+  ]))
+})
+
+app.get('/checkbox', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify({
+    name: true,
+    price: false,
+    total: true,
+    notes: false
   }))
 })
 
