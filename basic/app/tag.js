@@ -1,7 +1,7 @@
 
 app.tag = function (name, options, inline) {
   Object.keys(app.tags).forEach(function (tag) {
-    if (tag !== name) {
+    if (app.tags[tag] && tag !== name) {
       app.tags[tag].unmount(true)
     }
   })
