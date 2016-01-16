@@ -9,6 +9,9 @@ app.router = function (page) {
   else if (page == 'checkbox') {
     app.tag('checkbox')
   }
+  else if (page == 'class') {
+    app.tag('class')
+  }
   else {
     r.route('loop')
   }

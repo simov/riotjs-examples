@@ -49,6 +49,15 @@ app.get('/checkbox', function (req, res) {
   }))
 })
 
+app.get('/class', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {type: 'centered'},
+    {type: 'stretched'},
+    {type: 'condensed'}
+  ]))
+})
+
 app.get('/', function (req, res) {
   res.render('base', {})
 })
