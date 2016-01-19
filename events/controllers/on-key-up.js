@@ -1,5 +1,5 @@
 
-app.controller.example1 = function (opts) {
+app.controller['on-key-up'] = function (opts) {
 
   function handleResponse (res) {
     this.tables = res.tables

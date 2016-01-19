@@ -1,12 +1,12 @@
 
 app.router = function (page) {
-  if (page == 'example1') {
-    app.tag('example1')
+  if (page == 'on-key-up') {
+    app.tag('on-key-up')
   }
   else if (page == 'two-way-binding') {
     app.tag('two-way-binding')
   }
   else {
-    r.route('example1')
+    r.route('on-key-up')
   }
 }
