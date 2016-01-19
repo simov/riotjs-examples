@@ -1,0 +1,36 @@
+
+<div each="{columns}">
+  <label>{name}</label>
+
+  <div if="{text}">
+    <input onchange="{sync}" type="text" name="" value="{value}" />
+  </div>
+
+  <div if="{select}">
+    <select onchange="{sync}" name="" class="chosen">
+      <option value=""></option>
+      <option each="{options}" value="{value}">{text}</option>
+    </select>
+  </div>
+
+  <div if="{radio}" onchange="{sync}">
+    <label each="{options}">
+      <input type="radio" name="group{name}" value="{value}" /> {text}
+    </label>
+  </div>
+
+  <div if="{number}">
+    <input onchange="{sync}" type="number" name="" value="{value}" step="any" />
+  </div>
+
+  <div if="{date}">
+    <input onchange="{sync}" type="text" name="" value="{value}" autocomplete="off" class="datetime" />
+  </div>
+
+  <div if="{textarea}">
+    <textarea onchange="{sync}" name="editor{(Math.random()*0xFFFFFF<<0).toString(16)}" class="ckeditor">{value}</textarea>
+    <input onchange="{sync}" type="hidden" name="" value="{value}" />
+  </div>
+</div>
+
+<button onclick="{send}" type="button">Send</button>
