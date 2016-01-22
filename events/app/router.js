@@ -6,6 +6,9 @@ app.router = function (page) {
   else if (page == 'two-way-binding') {
     app.tag('two-way-binding')
   }
+  else if (page == 'index-of') {
+    app.tag('index-of')
+  }
   else {
     r.route('on-key-up')
   }
