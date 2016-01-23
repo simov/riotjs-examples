@@ -9,6 +9,9 @@ app.router = function (page) {
   else if (page == 'index-of') {
     app.tag('index-of')
   }
+  else if (page == 'select2') {
+    app.tag('select2')
+  }
   else {
     r.route('on-key-up')
   }
