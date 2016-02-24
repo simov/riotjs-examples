@@ -1,0 +1,26 @@
+{
+  "name": "riot-examples",
+  "version": "0.0.0",
+  "description": "RiotJS Examples",
+  "private": true,
+  "keywords": [],
+  "license": "MIT",
+  "homepage": "https://github.com/simov/riotjs-examples",
+  "author": "Simeon Velichkov <simeonvelichkov@gmail.com> (http://simov.github.io)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simov/riotjs-examples.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "consolidate": "^0.14.0",
+    "express": "^4.13.4",
+    "hogan.js": "^3.0.2",
+    "morgan": "^1.7.0",
+    "serve-static": "^1.10.2"
+  },
+  "devDependencies": {},
+  "main": "",
+  "files": [],
+  "scripts": {}
+}
