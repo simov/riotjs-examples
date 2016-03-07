@@ -7,7 +7,7 @@ app.controller['index-of'] = function (opts) {
 
   $.ajax({
     type: 'GET',
-    url: 'api',
+    url: 'index-of',
     dataType: 'json',
     success: handleResponse.bind(this)
   })

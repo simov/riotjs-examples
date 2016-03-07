@@ -13,14 +13,12 @@
   },
   "dependencies": {
     "body-parser": "^1.15.0",
-    "consolidate": "^0.14.0",
     "express": "^4.13.4",
-    "hogan.js": "^3.0.2",
     "morgan": "^1.7.0",
     "serve-static": "^1.10.2"
   },
   "devDependencies": {},
-  "main": "",
+  "main": "server.js",
   "files": [],
   "scripts": {}
 }

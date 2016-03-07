@@ -13,7 +13,7 @@ app.controller.select2 = function (opts) {
 
   $.ajax({
     type: 'GET',
-    url: 'api',
+    url: 'index-of',
     dataType: 'json',
     success: handleResponse.bind(this)
   })
@@ -40,18 +40,18 @@ app.controller.select2 = function (opts) {
     this.items = items
     localStorage.setItem('items', this.items)
   }
-}
 
-var jq = {
-  singleAll: function () {
-    $('.single-all').select2({
-      allowClear: true,
-      placeholder: 'Choose'
-    })
-  },
-  multipleAll: function () {
-    $('.multiple-all').select2({
-      placeholder: 'Choose'
-    })
+  var jq = {
+    singleAll: function () {
+      $('.single-all').select2({
+        allowClear: true,
+        placeholder: 'Choose'
+      })
+    },
+    multipleAll: function () {
+      $('.multiple-all').select2({
+        placeholder: 'Choose'
+      })
+    }
   }
 }

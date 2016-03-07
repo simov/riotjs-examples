@@ -14,7 +14,7 @@ app.controller['on-key-up'] = function (opts) {
 
   $.ajax({
     type: 'GET',
-    url: 'api',
+    url: 'index-of',
     dataType: 'json',
     success: handleResponse.bind(this)
   })

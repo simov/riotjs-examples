@@ -1,27 +1,73 @@
 
+var fs = require('fs')
 var path = require('path')
 var express = require('express')
 var logger = require('morgan')
-var bodyParser = require('body-parser')
 var serveStatic = require('serve-static')
-var consolidate = require('consolidate')
-var hogan = require('hogan.js')
 
+var base  = fs.readFileSync(path.resolve(__dirname, 'views/base.html'), 'utf8')
 var app = express()
 
 app.use(logger('dev'))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'html')
-app.set('view cache', false)
-app.engine('html', consolidate.hogan)
 app.use(serveStatic(path.join(__dirname, 'app')))
 app.use(serveStatic(path.join(__dirname, 'components')))
 app.use(serveStatic(path.join(__dirname, 'controllers')))
-app.use(serveStatic(path.join(__dirname, 'public')))
-app.use(serveStatic(path.join(__dirname, 'views')))
-app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/api', function (req, res) {
+// basics
+
+app.get('/set-timeout', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify({
+    a: (Math.floor(Math.random() * 999999) + 1).toString(),
+    b: (Math.floor(Math.random() * 999999) + 1).toString(),
+    c: (Math.floor(Math.random() * 999999) + 1).toString()
+  }))
+})
+
+// templating
+
+app.get('/loops', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify({
+    arr: [{a: 1, b: 2}, {a: 3, b: 4}],
+    obj: {a: 1, b: 2, c: 3, d: 4}
+  }))
+})
+
+app.get('/select', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {text: 'Car', value: 'car'},
+    {text: 'Game', value: 'game'},
+    {text: 'Gender', value: 'gender'},
+    {text: 'Member', value: 'member'},
+    {text: 'Team', value: 'team'},
+    {text: 'User', value: 'user'}
+  ]))
+})
+
+app.get('/checkbox', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify({
+    name: true,
+    price: false,
+    total: true,
+    notes: false
+  }))
+})
+
+app.get('/class', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {type: 'centered'},
+    {type: 'stretched'},
+    {type: 'condensed'}
+  ]))
+})
+
+// events
+
+app.get('/index-of', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})
   res.end(JSON.stringify({
     tables: [
@@ -64,7 +110,8 @@ app.post('/two-way-binding', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-  res.render('base', {})
+  res.writeHead(200, {'content-type': 'text/html'})
+  res.end(base)
 })
 
 app.listen(3000, function () {
