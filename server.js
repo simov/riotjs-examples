@@ -5,7 +5,7 @@ var express = require('express')
 var logger = require('morgan')
 var serveStatic = require('serve-static')
 
-var base  = fs.readFileSync(path.resolve(__dirname, 'views/base.html'), 'utf8')
+var base  = fs.readFileSync(path.resolve(__dirname, 'base.html'), 'utf8')
 var app = express()
 
 app.use(logger('dev'))
