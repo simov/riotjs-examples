@@ -1,7 +1,8 @@
 
 app.controller['index-of'] = function (opts) {
+
   function handleResponse (res) {
-    this.tables = res.tables
+    this.items = res
     this.update()
   }
 
@@ -13,7 +14,7 @@ app.controller['index-of'] = function (opts) {
   })
 
   this.remove = function (e) {
-    var index = this.tables.indexOf(e.item)
-    this.tables.splice(index, 1)
+    var index = this.items.indexOf(e.item)
+    this.items.splice(index, 1)
   }
 }

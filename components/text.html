@@ -4,7 +4,7 @@
 <form action="#" method="POST" accept-charset="utf-8">
   <fieldset>
     <label>Filter</label>
-    <input id="input" onkeyup="{filter}" type="text" name="" value="" />
+    <input id="input" onkeyup="{filter}" type="text" />
     <button onclick="{clear}">Clear</button>
   </fieldset>
 </form>
@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr each="{tables}" if="{show || show === undefined}">
+    <tr each="{items}" if="{show || show === undefined}">
       <td>{verbose}</td>
     </tr>
   </tbody>

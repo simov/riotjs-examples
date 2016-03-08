@@ -1,8 +1,8 @@
 
-app.controller['on-key-up'] = function (opts) {
+app.controller.text = function (opts) {
 
   function handleResponse (res) {
-    this.tables = res.tables
+    this.items = res
     this.update()
 
     var filter = localStorage.getItem('filter')
@@ -14,7 +14,7 @@ app.controller['on-key-up'] = function (opts) {
 
   $.ajax({
     type: 'GET',
-    url: 'index-of',
+    url: 'text',
     dataType: 'json',
     success: handleResponse.bind(this)
   })
@@ -22,7 +22,7 @@ app.controller['on-key-up'] = function (opts) {
   this.filter = function (e) {
     var value = this.input.value
 
-    this.tables.forEach(function (table) {
+    this.items.forEach(function (table) {
       if (table.verbose.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
         table.show = true
       }

@@ -13,28 +13,32 @@ app.router = (page) => {
   else if (page === 'loop') {
     app.tag('loop')
   }
+  else if (page === 'class') {
+    app.tag('class')
+  }
+
+  // events
+  else if (page === 'index-of') {
+    app.tag('index-of')
+  }
+
+  // controls
   else if (page === 'selects') {
     app.tag('selects')
   }
   else if (page === 'checkbox') {
     app.tag('checkbox')
   }
-  else if (page === 'class') {
-    app.tag('class')
+  else if (page === 'text') {
+    app.tag('text')
   }
 
-  // events
-  else if (page === 'on-key-up') {
-    app.tag('on-key-up')
+  // advanced
+  else if (page === 'select2') {
+    app.tag('select2')
   }
   else if (page === 'two-way-binding') {
     app.tag('two-way-binding')
-  }
-  else if (page === 'index-of') {
-    app.tag('index-of')
-  }
-  else if (page === 'select2') {
-    app.tag('select2')
   }
 
   // default

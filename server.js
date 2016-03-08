@@ -34,6 +34,31 @@ app.get('/loops', function (req, res) {
   }))
 })
 
+app.get('/class', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {type: 'centered'},
+    {type: 'stretched'},
+    {type: 'condensed'}
+  ]))
+})
+
+// events
+
+app.get('/index-of', function (req, res) {
+  res.writeHead(200, {'content-type': 'application/json'})
+  res.end(JSON.stringify([
+    {verbose: 'Car'},
+    {verbose: 'Game'},
+    {verbose: 'Gender'},
+    {verbose: 'Member'},
+    {verbose: 'Team'},
+    {verbose: 'User'}
+  ]))
+})
+
+// controls
+
 app.get('/select', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})
   res.end(JSON.stringify([
@@ -56,30 +81,19 @@ app.get('/checkbox', function (req, res) {
   }))
 })
 
-app.get('/class', function (req, res) {
+app.get('/text', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})
   res.end(JSON.stringify([
-    {type: 'centered'},
-    {type: 'stretched'},
-    {type: 'condensed'}
+    {verbose: 'Car'},
+    {verbose: 'Game'},
+    {verbose: 'Gender'},
+    {verbose: 'Member'},
+    {verbose: 'Team'},
+    {verbose: 'User'}
   ]))
 })
 
-// events
-
-app.get('/index-of', function (req, res) {
-  res.writeHead(200, {'content-type': 'application/json'})
-  res.end(JSON.stringify({
-    tables: [
-      {verbose: 'Car'},
-      {verbose: 'Game'},
-      {verbose: 'Gender'},
-      {verbose: 'Member'},
-      {verbose: 'Team'},
-      {verbose: 'User'}
-    ]
-  }))
-})
+// advanced
 
 app.get('/two-way-binding', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})

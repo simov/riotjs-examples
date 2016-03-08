@@ -17,11 +17,10 @@ app.controller.selects = function (opts) {
   this.onChange = function (e) {
     if (e.target.selectedIndex === 0) {
       this.current = ''
-      localStorage.setItem('item', '')
     }
     else {
       this.current = this.items[e.target.selectedIndex-1].value
-      localStorage.setItem('item', this.current)
     }
+    localStorage.setItem('item', this.current)
   }
 }
