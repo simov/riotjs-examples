@@ -22,12 +22,12 @@ app.controller.text = function (opts) {
   this.filter = function (e) {
     var value = this.input.value
 
-    this.items.forEach(function (table) {
-      if (table.verbose.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
-        table.show = true
+    this.items.forEach(function (item) {
+      if (item.verbose.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+        item.show = true
       }
       else {
-        table.show = false
+        item.show = false
       }
     })
 

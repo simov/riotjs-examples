@@ -2,6 +2,7 @@
 app.controller['two-way-binding'] = function (opts) {
   function handleResponse (res) {
     console.log('res', res)
+
     this.controls = res
     this.update()
 

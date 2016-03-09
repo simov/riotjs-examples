@@ -19,7 +19,7 @@ app.controller.checkbox = function (opts) {
     success: handleResponse.bind(this)
   })
 
-  this.onChange = function (e) {
+  this.sync = function (e) {
     this.items[e.item.key] = !e.item.value
     localStorage.setItem('checkbox', JSON.stringify(this.items))
   }

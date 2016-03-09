@@ -23,7 +23,7 @@ app.controller.class = function (opts) {
     success: handleResponse.bind(this)
   })
 
-  this.onChange = function (e) {
+  this.sync = function (e) {
     localStorage.setItem('type', e.item.type)
     setType(e.item.type)
   }

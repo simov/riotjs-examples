@@ -3,7 +3,7 @@
   <label>{name}</label>
 
   <div if="{control.text}">
-    <input onchange="{sync}" type="text" value="{value}" />
+    <input type="text" onchange="{sync}" value="{value}" />
   </div>
 
   <div if="{control.select}">
@@ -20,16 +20,16 @@
   </div>
 
   <div if="{control.number}">
-    <input onchange="{sync}" type="number" value="{value}" step="any" />
+    <input type="number" onchange="{sync}" value="{value}" step="any" />
   </div>
 
   <div if="{control.date}">
-    <input onchange="{sync}" type="text" value="{value}" autocomplete="off" class="datetime" />
+    <input type="text" onchange="{sync}" value="{value}" class="datetime" autocomplete="off" />
   </div>
 
   <div if="{control.textarea}">
     <textarea onchange="{sync}" class="ckeditor">{value}</textarea>
-    <input onchange="{sync}" type="hidden" value="{value}" />
+    <input type="hidden" onchange="{sync}" value="{value}" />
   </div>
 </div>
 

@@ -4,8 +4,7 @@
 <ul>
   <li each="{key, value in items}">
     <label>
-      <input type="checkbox" __checked="{value}" onchange="{onChange}" />
-      {key}
+      <input type="checkbox" __checked="{value}" onchange="{sync}" /> {key}
     </label>
   </li>
 </ul>

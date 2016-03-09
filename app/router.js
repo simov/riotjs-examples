@@ -1,5 +1,5 @@
 
-app.router = (page) => {
+app.router = function (page) {
 
   // basics
   if (page === 'set-timeout') {

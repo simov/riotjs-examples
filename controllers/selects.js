@@ -14,7 +14,7 @@ app.controller.selects = function (opts) {
     success: handleResponse.bind(this)
   })
 
-  this.onChange = function (e) {
+  this.sync = function (e) {
     if (e.target.selectedIndex === 0) {
       this.current = ''
     }
