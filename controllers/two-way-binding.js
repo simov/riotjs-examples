@@ -24,8 +24,8 @@ app.controller['two-way-binding'] = function (opts) {
     e.item.value = (function (c) {
       if (c.multiple) {
         // selectize
-        return e.currentTarget.childNodes.map(function (option) {
-          return option.value
+        return Object.keys(e.currentTarget.childNodes).map(function (key) {
+          return e.currentTarget.childNodes[key].value
         })
       }
       else if (c.select) {
