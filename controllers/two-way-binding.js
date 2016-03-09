@@ -1,13 +1,13 @@
 
 app.controller['two-way-binding'] = function (opts) {
   function handleResponse (res) {
-    console.log(res)
-    this.columns = res.columns
+    console.log('res', res)
+    this.controls = res
     this.update()
 
     jq.initChosen()
     jq.initDatetimePicker()
-    jq.initCkeditor()
+    jq.initCKEditor()
   }
 
   $.ajax({
@@ -18,34 +18,38 @@ app.controller['two-way-binding'] = function (opts) {
   })
 
   this.sync = function (e) {
-    console.log(e)
+    console.log('sync', e)
 
-    if (e.item.select) {
-      var index = e.currentTarget.selectedIndex-1
-      var value = (index < 0) ? '' : e.item.options[index].value
-      e.item.value = value
-    }
-    else if (e.item.radio) {
-      var value = e.srcElement.value
-      e.item.value = value
-    }
-    else if (e.item.date || e.item.textarea) {
-      var value = e.currentTarget.value
-      e.item.value = value
-    }
-    else {
-      var value = e.srcElement.value
-      e.item.value = value
-    }
+    e.item.value = (function (c) {
+      if (c.multiple) {
+        // selectize
+        return e.currentTarget.childNodes.map(function (option) {
+          return option.value
+        })
+      }
+      else if (c.select) {
+        // regular select
+        var index = e.currentTarget.selectedIndex-1
+        return (index < 0) ? '' : e.item.options[index].value
+        // selectize
+        // return e.currentTarget.value
+      }
+      else if (c.date || c.time || c.datetime || c.year || c.textarea) {
+        return e.currentTarget.value
+      }
+      else if (c.text || c.radio || c.number || c.file) {
+        return e.srcElement.value
+      }
+    })(e.item.control)
 
-    console.log(value)
+    console.log('value', e.item.value)
   }
 
   this.send = function () {
-    console.log(this.columns)
+    console.log('send', this.controls)
 
     function handleResponse (res) {
-      console.log(res)
+      console.log('res', res)
       this.update()
     }
 
@@ -53,7 +57,7 @@ app.controller['two-way-binding'] = function (opts) {
       $.ajax({
         type: 'POST',
         url: 'two-way-binding',
-        data: {columns: this.columns},
+        data: this.controls,
         dataType: 'json',
         success: handleResponse.bind(this)
       })
@@ -64,43 +68,53 @@ app.controller['two-way-binding'] = function (opts) {
 
   var jq = {
     initChosen: function () {
-      var options = {
+      $('.chosen').chosen({
         allow_single_deselect: true,
         no_results_text: 'No results matched!<br /> <a href="#">Click to add</a> ',
         width: '100%'
-      }
-      $('.chosen').chosen(options)
+      })
     },
     initDatetimePicker: function () {
-      var options = {
+      $('.datetime').datetimepicker({
         weekStart: 1, autoclose: 1, todayHighlight: 1,
         keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade',
         language: 'en',
         format: 'yyyy-mm-dd',
         formatViewType: 'date', startView: 2, minView: 2, maxView: 4
-      }
-      $('.datetime').datetimepicker(options)
+      })
     },
-    initCkeditor: function () {
-      $('.ckeditor').ckeditor({
-        toolbarGroups: [
-          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-          { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
-          '/',
-          { name: 'styles' },
-          { name: 'colors' },
-          { name: 'insert' }
-        ],
-        removeButtons: 'Smiley,SpecialChar,PageBreak,Iframe,CreateDiv,Table,Flash,HorizontalRule',
-        language: 'en'
-      })
-      var name = $('.ckeditor').attr('name')
-      CKEDITOR.instances[name].on('blur', function (e) {
-        var id = '#cke_' + e.editor.name
-        var hidden = $(id).next()
-        hidden.val(e.editor.getData())
-        hidden[0].onchange({})
-      })
+    initCKEditor: function () {
+      function init () {
+        $('.ckeditor').each(function () {
+          if ($(this).next().attr('type') === 'hidden') {
+            var instance = $(this).ckeditor({
+              toolbarGroups: [
+                {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
+                {name: 'paragraph',   groups: ['list', 'indent', 'blocks', 'align']},
+                '/',
+                {name: 'styles'},
+                {name: 'colors'},
+                {name: 'insert'}
+              ],
+              removeButtons: 'Smiley,SpecialChar,PageBreak,Iframe,CreateDiv,Table,Flash,HorizontalRule',
+              language: 'en'
+            })
+            instance.editor.on('blur', function (e) {
+              var id = '#cke_' + e.editor.name
+              var hidden = $(id).next()
+              hidden.val(e.editor.getData())
+              hidden[0].onchange({})
+            })
+          }
+        })
+      }
+      if (timeout) {
+        return
+      }
+      var timeout = setTimeout(function () {
+        init()
+        clearTimeout(timeout)
+      }, 100)
     }
   }
 }

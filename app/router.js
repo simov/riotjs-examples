@@ -34,9 +34,6 @@ app.router = (page) => {
   }
 
   // advanced
-  else if (page === 'select2') {
-    app.tag('select2')
-  }
   else if (page === 'two-way-binding') {
     app.tag('two-way-binding')
   }

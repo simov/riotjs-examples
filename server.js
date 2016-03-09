@@ -4,6 +4,7 @@ var path = require('path')
 var express = require('express')
 var logger = require('morgan')
 var serveStatic = require('serve-static')
+var bodyParser = require('body-parser')
 
 var base  = fs.readFileSync(path.resolve(__dirname, 'base.html'), 'utf8')
 var app = express()
@@ -12,6 +13,7 @@ app.use(logger('dev'))
 app.use(serveStatic(path.join(__dirname, 'app')))
 app.use(serveStatic(path.join(__dirname, 'components')))
 app.use(serveStatic(path.join(__dirname, 'controllers')))
+app.use(bodyParser.urlencoded({extended: true}))
 
 // basics
 
@@ -97,24 +99,22 @@ app.get('/text', function (req, res) {
 
 app.get('/two-way-binding', function (req, res) {
   res.writeHead(200, {'content-type': 'application/json'})
-  res.end(JSON.stringify({
-    columns: [
-      {name: 'text', text: true},
-      {name: 'select', select: true, options: [
-        {text: 'Car', value: 0},
-        {text: 'Game', value: 1},
-        {text: 'Gender', value: 2},
-        {text: 'Member', value: 3}
-      ]},
-      {name: 'radio', radio: true, options: [
-        {text: 'True', value: 1},
-        {text: 'False', value: 0}
-      ]},
-      {name: 'number', number: true},
-      {name: 'date', date: true},
-      {name: 'textarea', textarea: true}
-    ]
-  }))
+  res.end(JSON.stringify([
+    {name: 'text', control: {text: true}},
+    {name: 'select', control: {select: true}, options: [
+      {text: 'Car', value: 0},
+      {text: 'Game', value: 1},
+      {text: 'Gender', value: 2},
+      {text: 'Member', value: 3}
+    ]},
+    {name: 'radio', control: {radio: true}, options: [
+      {text: 'True', value: 1},
+      {text: 'False', value: 0}
+    ]},
+    {name: 'number', control: {number: true}},
+    {name: 'date', control: {date: true}},
+    {name: 'textarea', control: {textarea: true}}
+  ]))
 })
 
 app.post('/two-way-binding', function (req, res) {

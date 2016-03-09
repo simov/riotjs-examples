@@ -10,11 +10,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.3.4/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" rel="stylesheet" type="text/css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" type="text/css">
   <style type="text/css">
-    .select2 {width: 250px !important;}
-    nav ul ul li { display: inline; }
-    nav ul ul li:after { content: ' -'; }
+    nav ul li a:before { content: ' • '; }
   </style>
 
   <!-- riot -->
@@ -27,7 +24,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.4/ckeditor.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.4/adapters/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js" type="text/javascript" charset="utf-8"></script>
 
   <!-- app -->
   <script src="index.js" type="text/javascript" charset="utf-8"></script>
@@ -47,7 +43,6 @@
   <script src="checkbox.js" type="text/javascript" charset="utf-8"></script>
   <script src="text.js" type="text/javascript" charset="utf-8"></script>
 
-  <script src="select2.js" type="text/javascript" charset="utf-8"></script>
   <script src="two-way-binding.js" type="text/javascript" charset="utf-8"></script>
 
   <!-- start -->
@@ -55,38 +50,27 @@
 </head>
 <body>
 
-<!-- navigation -->
+  <!-- navigation -->
   <nav>
     <ul>
       <li>Basics
-      <ul>
-        <li><a href="/#set-timeout">setTimeout</a></li>
-        <li><a href="/#inline-tag">Inline Tag</a></li>
-      </ul>
+        <a href="/#set-timeout">setTimeout</a>
+        <a href="/#inline-tag">Inline Tag</a>
       </li>
       <li>Templating
-        <ul>
-          <li><a href="/#loop">Loop</a></li>
-          <li><a href="/#class">Class</a></li>
-        </ul>
+        <a href="/#loop">Loop</a>
+        <a href="/#class">Class</a>
       </li>
       <li>Events
-        <ul>
-          <li><a href="/#index-of">IndexOf</a></li>
-        </ul>
+        <a href="/#index-of">IndexOf</a>
       </li>
       <li>Controls
-        <ul>
-          <li><a href="/#selects">Select</a></li>
-          <li><a href="/#checkbox">Checkbox</a></li>
-          <li><a href="/#text">Text</a></li>
-        </ul>
+        <a href="/#selects">Select</a>
+        <a href="/#checkbox">Checkbox</a>
+        <a href="/#text">Text</a>
       </li>
-      <li>Events
-        <ul>
-          <li><a href="/#select2">Select2</a></li>
-          <li><a href="/#two-way-binding">Two Way Binding</a></li>
-        </ul>
+      <li>Advanced
+        <a href="/#two-way-binding">Two-Way Binding</a>
       </li>
     </ul>
   </nav>
@@ -110,7 +94,6 @@
   <checkbox></checkbox>
   <text></text>
 
-  <select2></select2>
   <two-way-binding></two-way-binding>
 
 </body>
