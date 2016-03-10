@@ -2,14 +2,15 @@
 app.controller['set-timeout'] = function (opts) {
   this.title = opts.title
 
-  this.timer = setInterval(() => {
+  var self = this
+  this.timer = setInterval(function () {
     $.ajax({
       type: 'GET',
       url: 'set-timeout',
       dataType: 'json',
-      success: (res) => {
-        this.items = res
-        this.update()
+      success: function (res) {
+        self.items = res
+        self.update()
       }
     })
   }, 1000)
